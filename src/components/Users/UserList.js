@@ -6,7 +6,9 @@ const UserList = ({
 					  items,
 					  isLoading,
 					  searchValue,
-					  changeSearchValue
+					  changeSearchValue,
+					  invites,
+					  onClickInvite
 				  }) => {
 	return (
 		<div>
@@ -36,6 +38,8 @@ const UserList = ({
 								obj.email.toLowerCase().includes(searchValue.toLowerCase());
 						}).map((obj => (
 								<User key={obj.id}
+									  isInvited={invites.includes(obj.id)}
+									  onClickInvite={onClickInvite}
 									  {...obj}
 								/>)
 						))

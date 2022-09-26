@@ -6,6 +6,8 @@ const User = ({
 				  first_name,
 				  last_name,
 				  avatar,
+				  isInvited,
+				  onClickInvite
 
 			  }) => {
 	return (
@@ -22,7 +24,12 @@ const User = ({
 					</p>
 				</div>
 			</div>
-			<img className='action' src='/assets/plus.svg' alt='action'/>
+			<img
+				onClick={() => onClickInvite(id)}
+				className='action'
+				src={`/assets/${isInvited ? 'minus' : 'plus'}.svg`}
+				alt='action'
+			/>
 		</li>
 
 	)
