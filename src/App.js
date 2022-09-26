@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.scss';
+import UserList from "./components/Users/UserList";
 
-class App extends Component {
-  render() {
+// Тут список пользователей: https://reqres.in/api/users
+
+function App() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="App">
+            <UserList/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
     );
-  }
 }
 
 export default App;
