@@ -3,6 +3,7 @@ import Skeleton from "./Skeleton";
 import User from "./User";
 
 const UserList = ({items, isLoading}) => {
+	console.log(items);
 	return (
 		<div>
 			<div className="search">
@@ -19,7 +20,9 @@ const UserList = ({items, isLoading}) => {
 				</div>
 			) : (
 				<ul className="users-list">
-					<User/>
+					{
+						items.map((obj => <User/>))
+					}
 				</ul>
 			)}
 			<button className="send-invite-btn">Отправить приглашение</button>
