@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './index.scss';
 import UserList from "./components/Users/UserList";
+import Success from "./components/Success";
 
 // Тут список пользователей: https://reqres.in/api/users
 
@@ -9,6 +10,7 @@ const App = () => {
     const [isLoading, setLoading] = useState(true);
     const [searchValue, setSearchValue] = useState('');
     const [invites, setInvites] = useState([]);
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         fetch(`https://reqres.in/api/users`)
@@ -32,17 +34,29 @@ const App = () => {
         }
     };
 
+    const onSendInvites = () => {
+        setSuccess(true);
+    }
 
     return (
         <div className="App">
-            <UserList
-                items={users}
-                isLoading={isLoading}
-                searchValue={searchValue}
-                changeSearchValue={changeSearchValue}
-                invites={invites}
-                onClickInvite={onClickInvite}
-            />
+            {
+                success ? (
+                    <Success count={invites.length}/>
+                ) :
+                    (
+                        <UserList
+                            items={users}
+                            isLoading={isLoading}
+                            searchValue={searchValue}
+                            changeSearchValue={changeSearchValue}
+                            invites={invites}
+                            onClickInvite={onClickInvite}
+                            onSendInvites={onSendInvites}
+                        />
+
+                    )
+            }
         </div>
     );
 }

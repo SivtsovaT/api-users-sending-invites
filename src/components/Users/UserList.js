@@ -8,7 +8,8 @@ const UserList = ({
 					  searchValue,
 					  changeSearchValue,
 					  invites,
-					  onClickInvite
+					  onClickInvite,
+					  onSendInvites
 				  }) => {
 	return (
 		<div>
@@ -46,7 +47,11 @@ const UserList = ({
 					}
 				</ul>
 			)}
-			<button className="send-invite-btn">Отправить приглашение</button>
+			{
+				invites.length > 0 && (
+					<button onClick={onSendInvites} className="send-invite-btn">Отправить приглашение</button>
+				)
+			}
 		</div>
 	)
 }
