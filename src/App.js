@@ -7,6 +7,7 @@ import UserList from "./components/Users/UserList";
 const App = () => {
     const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
         fetch(`https://reqres.in/api/users`)
@@ -18,12 +19,18 @@ const App = () => {
         }).finally(() => setLoading(false));
     }, []);
 
+    const changeSearchValue = (event) => {
+        setSearchValue(event.target.value);
+    }
+
 
     return (
         <div className="App">
             <UserList
                 items={users}
                 isLoading={isLoading}
+                searchValue={searchValue}
+                changeSearchValue={changeSearchValue}
             />
         </div>
     );
