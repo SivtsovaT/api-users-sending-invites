@@ -21,7 +21,11 @@ const UserList = ({items, isLoading}) => {
 			) : (
 				<ul className="users-list">
 					{
-						items.map((obj => <User/>))
+						items.map((obj => (
+								<User key={obj.id}
+									  {...obj}
+								/>)
+						))
 					}
 				</ul>
 			)}

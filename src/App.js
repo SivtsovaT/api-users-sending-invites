@@ -6,6 +6,7 @@ import UserList from "./components/Users/UserList";
 
 const App = () => {
     const [users, setUsers] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(`https://reqres.in/api/users`)
@@ -14,7 +15,7 @@ const App = () => {
                 setUsers(json.data)
             }).catch(err => {
             console.log('error')
-        });
+        }).finally(() => setLoading(false));
     }, []);
 
 
@@ -22,7 +23,7 @@ const App = () => {
         <div className="App">
             <UserList
                 items={users}
-
+                isLoading={isLoading}
             />
         </div>
     );
